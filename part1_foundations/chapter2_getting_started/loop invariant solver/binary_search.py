@@ -27,24 +27,24 @@ class BinarySearch(Algorithm):
     
     def __init__(self, array: List[Any], target: Any) -> None:
         """Initialize binary search with sorted array and target value."""
-        self.array = sorted(array)
-        self.target = target
-        self.left = 0
-        self.right = len(array) - 1
-        self.processed = set()
+        self.array = sorted(array)                                  # Sort the array
+        self.target = target                                        # Set the target
+        self.left = 0                                               # Set the left index to 0
+        self.right = len(array) - 1                                 # Set the right index to the length of the array minus 1
+        self.processed = set()                                      # Initialize the processed set
 
     def initialize(self) -> AlgorithmState:
         """Initialize binary search with empty processed set."""
-        self.processed = set()
-        mid = (self.left + self.right) // 2
+        self.processed = set()                                      # Initialize the processed set
+        mid = (self.left + self.right) // 2                         # Calculate the mid index
         
         return AlgorithmState(
-            iteration=0,
-            processed_elements=[],
-            current_element=self.array[mid],
-            remaining_elements=self.array[:mid] + self.array[mid+1:],
-            target=self.target,
-            result=None
+            iteration=0,                                            # Set the iteration to 0
+            processed_elements=[],                                  # Set the processed elements to an empty list
+            current_element=self.array[mid],                        # Set the current element to the mid element
+            remaining_elements=self.array[:mid]+self.array[mid+1:], # Set the remaining elements to the array excluding the mid element
+            target=self.target,                                     # Set the target
+            result=None                                             # Set the result to None
         )
         
     def step(self, iteration: int) -> AlgorithmState:
